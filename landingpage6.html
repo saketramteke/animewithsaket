@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Anime Posters — Limited Edition Prints</title>
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa7b2;
+    --accent:#ff6b6b;
+    --accent-2:#7c5cff;
+    --glass: rgba(255,255,255,0.03);
+    --radius:14px;
+    --gap:20px;
+    --maxw:1200px;
+  }
+
+  /* Reset + base */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#071224 0%, #081225 40%, #071226 100%);
+    color:#e6eef6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    padding:40px 16px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .container{
+    width:100%;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+
+  /* Header */
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:28px;
+  }
+  .logo{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .logo .mark{
+    width:44px;height:44px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;font-weight:700;color:white;font-size:20px;
+    box-shadow:0 6px 20px rgba(124,92,255,0.12), inset 0 -2px 6px rgba(0,0,0,0.25);
+  }
+  .logo h1{font-size:16px;margin:0}
+  .nav{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    color:var(--muted);
+    font-size:14px;
+  }
+  .nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:10px}
+  .nav a:hover{background:rgba(255,255,255,0.02);color:#fff}
+
+  /* Main hero */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:var(--gap);
+    align-items:center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+    padding:28px;
+    border-radius:var(--radius);
+    box-shadow: 0 10px 30px rgba(2,6,23,0.7), 0 1px 0 rgba(255,255,255,0.02) inset;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.02);
+  }
+
+  .hero-left{
+    padding-right:8px;
+  }
+  .eyebrow{
+    display:inline-block;
+    background:linear-gradient(90deg,var(--accent-2),var(--accent));
+    padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px;color:white;
+    box-shadow:0 6px 18px rgba(124,92,255,0.12);
+  }
+  .title{
+    font-size:32px;
+    margin:14px 0 12px;
+    letter-spacing:-0.02em;
+    color: #f8fbff;
+  }
+  .lead{
+    color:var(--muted);
+    margin-bottom:18px;
+    max-width:58ch;
+  }
+  .cta-row{display:flex;gap:12px;align-items:center}
+  .btn{
+    padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;
+    transition:transform .14s ease, box-shadow .14s ease;
+  }
+  .btn-primary{
+    background: linear-gradient(90deg,var(--accent), #ff915f);
+    color:white; box-shadow: 0 10px 30px rgba(255,107,107,0.12);
+  }
+  .btn-ghost{
+    background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.04);
+  }
+  .btn:hover{transform:translateY(-3px)}
+  .price-badge{
+    margin-left:auto;
+    background:linear-gradient(90deg,#0f1724, #0b1220);
+    padding:8px 12px;border-radius:10px;font-weight:700;font-size:15px;color:#fff;border:1px solid rgba(255,255,255,0.03)
+  }
+
+  /* Poster preview area (right) */
+  .poster-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-direction:column;
+  }
+  .poster{
+    width:320px;
+    height:460px;
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+    box-shadow: 0 18px 50px rgba(2,6,23,0.7);
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .poster .mock {
+    width:100%;height:100%;display:block;
+    background:linear-gradient(160deg,#180a2e 0%, #2c0c3b 45%, #5a0d6a 100%);
+    display:grid;place-items:center;color:#fff;font-weight:700;
+  }
+  .poster .small-meta{
+    position:absolute;left:12px;top:12px;background:var(--glass);padding:6px 8px;border-radius:8px;font-size:13px;color:var(--muted);
+    backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.02)
+  }
+  .poster .tag{
+    position:absolute;right:12px;bottom:12px;background:linear-gradient(90deg,#00000066,#00000044);
+    padding:8px 10px;border-radius:10px;font-weight:700;font-size:13px;
+  }
+
+  /* features section */
+  .section{margin-top:26px}
+  .features{
+    margin-top:14px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .feature{
+    background:var(--card);
+    padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .feature svg{flex-shrink:0;width:44px;height:44px;border-radius:10px;padding:8px;background:linear-gradient(180deg,#0b1220, #081222)}
+  .feature h4{margin:0 0 6px;font-size:15px}
+  .feature p{margin:0;color:var(--muted);font-size:13px}
+
+  /* Pricing grid */
+  .pricing{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:20px;
+  }
+  .plan{
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+    border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03);
+  }
+  .plan .tag{font-size:13px;color:var(--muted)}
+  .plan h3{margin:8px 0;font-size:20px}
+  .plan .price{font-weight:800;font-size:22px;margin:6px 0}
+  .plan ul{padding-left:18px;margin:12px 0;color:var(--muted)}
+  .plan .buy{margin-top:10px}
+
+  /* Footer */
+  footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center;padding:14px 8px}
+
+  /* Responsive */
+  @media (max-width:1020px){
+    .hero{grid-template-columns:1fr 320px}
+    .pricing{grid-template-columns:repeat(2,1fr)}
+    .features{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:760px){
+    header{flex-direction:column;align-items:flex-start;gap:12px}
+    .hero{grid-template-columns:1fr; padding:20px}
+    .poster{width:260px;height:370px}
+    .features{grid-template-columns:1fr}
+    .pricing{grid-template-columns:1fr}
+    .title{font-size:26px}
+  }
+
+  /* small utilities */
+  .muted{color:var(--muted)}
+  .center{text-align:center}
+  .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:700}
+  /* modal */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;z-index:60}
+  .modal{width:94%;max-width:680px;background:linear-gradient(180deg,#071224,#081226);border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.04)}
+  .modal h3{margin:0 0 8px}
+  .form-row{display:flex;gap:10px;margin-top:12px}
+  .form-row input, .form-row select{flex:1;padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:#eaf3ff}
+  .close{background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  /* subtle animations */
+  .poster{transition:transform .28s cubic-bezier(.16,.9,.42,1)}
+  .poster:hover{transform:translateY(-8px) rotate(-0.5deg)}
+  .plan:hover{transform:translateY(-6px);transition:transform .18s}
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo" aria-label="Anime Posters">
+        <div class="mark">AP</div>
+        <div>
+          <h1 style="margin:0;font-size:15px">Anime Posters</h1>
+          <div style="font-size:12px;color:var(--muted)">Limited edition prints</div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Top Navigation">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
+        <button class="btn btn-ghost" onclick="openModal()">Buy Now</button>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <span class="eyebrow">New Drop • Free Shipping</span>
+        <h2 id="hero-heading" class="title">Collectible anime character posters — museum-quality prints</h2>
+        <p class="lead">
+          Hand-signed limited edition posters printed on archival paper. Vibrant inks, deep blacks, and subtle texture make every poster pop. Choose size, frame, or go frameless — perfect for bedrooms, studios, and collectors.
+        </p>
+
+        <div class="cta-row" role="group" aria-label="Call to action">
+          <button class="btn btn-primary" onclick="openModal()" aria-haspopup="dialog">Pre-order Now</button>
+          <button class="btn btn-ghost" id="galleryToggle">View Gallery</button>
+
+          <div class="price-badge" aria-hidden="true">$24 — Starting</div>
+        </div>
+
+        <!-- quick highlights -->
+        <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+          <div class="pill">Archival paper</div>
+          <div class="pill">SGC Certified</div>
+          <div class="pill">Limited to 300 prints</div>
+        </div>
+      </div>
+
+      <aside class="poster-wrap" aria-label="Poster preview">
+        <div class="poster" id="poster">
+          <div class="small-meta">Poster #12 • 24x36</div>
+          <!-- Inline SVG "poster" graphic - swapable via JS -->
+          <div class="mock" id="posterSVG" role="img" aria-label="Poster preview image">
+            <!-- stylized anime poster SVG composition -->
+            <svg viewBox="0 0 320 460" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stop-color="#ffb199"/>
+                  <stop offset="1" stop-color="#7c5cff"/>
+                </linearGradient>
+                <linearGradient id="g2" x1="0" x2="1">
+                  <stop offset="0" stop-color="#1e1b5a"/>
+                  <stop offset="1" stop-color="#2d0c3a"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#g2)"/>
+              <!-- crescent moon -->
+              <g transform="translate(60,40)">
+                <ellipse cx="120" cy="30" rx="40" ry="13" fill="#ffd6a5" opacity="0.95"/>
+              </g>
+              <!-- character silhouette -->
+              <g transform="translate(30,70)">
+                <path d="M120 20 C96 30 90 70 82 120 C72 180 60 210 52 260 C48 290 40 320 36 328 L80 328 C120 328 190 328 210 320 C220 315 230 290 236 260 C246 210 220 180 208 120 C200 70 160 45 120 20 Z" fill="#00000066"/>
+                <path d="M110 60 C130 100 130 140 118 180 C106 220 108 246 110 276 C112 300 120 312 150 312" stroke="#ffd6a5" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+              </g>
+              <!-- accent stripes -->
+              <g opacity="0.12" fill="#fff">
+                <rect x="0" y="360" width="320" height="100"/>
+              </g>
+              <!-- bottom title -->
+              <g transform="translate(16,380)">
+                <rect x="0" y="0" width="288" height="62" rx="8" fill="rgba(0,0,0,0.12)"/>
+                <text x="14" y="22" font-size="14" fill="#fff" font-weight="700">Eclipse — Character Print</text>
+                <text x="14" y="42" font-size="11" fill="#e1e9f7" opacity="0.8">Limited Edition • #12/300</text>
+              </g>
+            </svg>
+          </div>
+          <div class="tag">Premium matte</div>
+        </div>
+
+        <div style="display:flex;gap:10px;">
+          <button class="btn btn-ghost" onclick="prevPoster()">Prev</button>
+          <button class="btn btn-ghost" onclick="nextPoster()">Next</button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section" aria-label="Features">
+      <h3 style="margin:0;font-size:18px">Why collectors love these posters</h3>
+      <p class="muted" style="margin-top:6px">Quality, authenticity, and aesthetics — crafted with collectors in mind.</p>
+
+      <div class="features" style="margin-top:12px">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#111827"/></svg>
+          <div>
+            <h4>Premium Paper</h4>
+            <p>320gsm archival paper with a subtle texture for museum-quality feel.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" rx="6"/></svg>
+          <div>
+            <h4>Limited Runs</h4>
+            <p>Each design limited to 300 prints. Numbered and signed on request.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect width="24" height="24" rx="6"/></svg>
+          <div>
+            <h4>Fast Shipping</h4>
+            <p>Shipped in reinforced tubes or optional frame packaging. Tracked delivery worldwide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section" aria-label="Pricing">
+      <h3 style="margin:0;font-size:18px">Pricing & options</h3>
+      <p class="muted" style="margin-top:6px">Choose your size and finishing. No hidden costs — taxes calculated at checkout.</p>
+
+      <div class="pricing">
+        <div class="plan">
+          <div class="tag">Small</div>
+          <h3>12" × 18"</h3>
+          <div class="price">$24</div>
+          <ul>
+            <li>320gsm archival matte</li>
+            <li>Signed by artist (select designs)</li>
+            <li>Free standard shipping</li>
+          </ul>
+          <button class="btn btn-primary buy" onclick="openModal('12x18',24)">Select</button>
+        </div>
+
+        <div class="plan" style="border:2px solid rgba(124,92,255,0.18);box-shadow:0 10px 30px rgba(124,92,255,0.06)">
+          <div class="tag">Most popular</div>
+          <h3>18" × 24"</h3>
+          <div class="price">$48</div>
+          <ul>
+            <li>Large gallery print</li>
+            <li>Limited edition numbering</li>
+            <li>Option: framed +$40</li>
+          </ul>
+          <button class="btn btn-primary buy" onclick="openModal('18x24',48)">Select</button>
+        </div>
+
+        <div class="plan">
+          <div class="tag">Large</div>
+          <h3>24" × 36"</h3>
+          <div class="price">$79</div>
+          <ul>
+            <li>Statement piece</li>
+            <li>Rolled in reinforced tube</li>
+            <li>White glove shipping available</li>
+          </ul>
+          <button class="btn btn-primary buy" onclick="openModal('24x36',79)">Select</button>
+        </div>
+      </div>
+    </section>
+
+    <footer id="reviews">
+      <div style="max-width:900px;margin:0 auto">
+        <p style="margin:0 0 8px">Trusted by collectors worldwide • 4.9/5 average rating</p>
+        <small class="muted">© <span id="year"></span> Anime Posters — All rights reserved.</small>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal (purchase) -->
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <h3 id="modalTitle">Pre-order Poster</h3>
+        <button class="close" aria-label="Close dialog" onclick="closeModal()">✕</button>
+      </div>
+
+      <p class="muted" id="modalSub">Select size and checkout securely — shipping calculated at checkout.</p>
+
+      <div class="form-row" style="margin-top:12px">
+        <select id="sizeSelect" aria-label="Select size">
+          <option value="12x18" data-price="24">12" × 18" — $24</option>
+          <option value="18x24" data-price="48" selected>18" × 24" — $48</option>
+          <option value="24x36" data-price="79">24" × 36" — $79</option>
+        </select>
+        <select id="finishSelect" aria-label="Select finish">
+          <option value="matte">Matte (standard)</option>
+          <option value="luster">Luster (+$8)</option>
+          <option value="framed">Framed (+$40)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <input id="name" type="text" placeholder="Full name" aria-label="Full name" />
+        <input id="email" type="email" placeholder="Email address" aria-label="Email address" />
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-top:12px">
+        <div style="font-weight:800">$<span id="calculated">48</span></div>
+        <div class="muted">incl. estimated shipping</div>
+        <div style="margin-left:auto">
+          <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:10px;font-size:13px">By pre-ordering you agree to our <a style="color:var(--accent);text-decoration:none" href="#">terms</a>.</p>
+    </div>
+  </div>
+
+<script>
+  // Small interactive behavior: poster gallery + modal + price calc
+  (function(){
+    const posters = [
+      { id:'eclipse', title:'Eclipse — Character Print', size:'24x36', svg:`<svg viewBox="0 0 320 460" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#241033"/><g transform="translate(40,60)"><ellipse cx="120" cy="30" rx="40" ry="13" fill="#ffd6a5" opacity="0.95"/></g><g transform="translate(30,70)"><path d="M120 20 C96 30 90 70 82 120 C72 180 60 210 52 260 C48 290 40 320 36 328 L80 328 C120 328 190 328 210 320 C220 315 230 290 236 260 C246 210 220 180 208 120 C200 70 160 45 120 20 Z" fill="#00000066"/><path d="M110 60 C130 100 130 140 118 180 C106 220 108 246 110 276 C112 300 120 312 150 312" stroke="#ffd6a5" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/></g><g opacity="0.12" fill="#fff"><rect x="0" y="360" width="320" height="100"/></g><g transform="translate(16,380)"><rect x="0" y="0" width="288" height="62" rx="8" fill="rgba(0,0,0,0.12)"/><text x="14" y="22" font-size="14" fill="#fff" font-weight="700">Eclipse — Character Print</text><text x="14" y="42" font-size="11" fill="#e1e9f7" opacity="0.8">Limited Edition • #12/300</text></g></svg>`},
+      { id:'neonblade', title:'Neon Blade — Cyber Character', size:'24x36', svg:`<svg viewBox="0 0 320 460" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="n1" x1="0" x2="1"><stop offset="0" stop-color="#00e0ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs><rect width="100%" height="100%" fill="#060814"/><g transform="translate(30,40)"><rect x="10" y="10" width="280" height="340" rx="8" fill="url(#n1)" opacity="0.08"/></g><g transform="translate(40,70)"><path d="M120 10 C100 30 90 80 84 120 C80 150 64 190 60 230 C58 260 70 300 86 318 L150 318 C190 318 220 300 236 272 C246 242 248 200 236 150 C220 80 160 40 120 10 Z" fill="#000"/></g><g transform="translate(30,360)"><rect width="260" height="60" rx="6" fill="#0b0b12"/><text x="14" y="26" font-size="14" fill="#fff" font-weight="700">Neon Blade</text></g></svg>`},
+      { id:'serenity', title:'Serenity — Minimal Print', size:'18x24', svg:`<svg viewBox="0 0 320 460" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#0b1830"/><g transform="translate(20,40)"><circle cx="160" cy="120" r="80" fill="#ffb199" opacity="0.95"/></g><g transform="translate(18,260)"><rect x="0" y="0" width="284" height="120" rx="8" fill="#061024"/><text x="14" y="36" font-size="16" fill="#fff">Serenity — Minimal Print</text></g></svg>`}
+    ];
+
+    let index = 0;
+    const posterSVG = document.getElementById('posterSVG');
+    const posterSmall = document.querySelector('.poster .small-meta');
+    function renderPoster(i){
+      const p = posters[i % posters.length];
+      posterSVG.innerHTML = p.svg;
+      posterSmall.textContent = `${p.title} • ${p.size}`;
+    }
+
+    window.nextPoster = function(){
+      index = (index + 1) % posters.length;
+      renderPoster(index);
+    }
+    window.prevPoster = function(){
+      index = (index - 1 + posters.length) % posters.length;
+      renderPoster(index);
+    }
+
+    renderPoster(index);
+
+    // Modal logic & price calculation
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSub = document.getElementById('modalSub');
+    const sizeSelect = document.getElementById('sizeSelect');
+    const finishSelect = document.getElementById('finishSelect');
+    const calculated = document.getElementById('calculated');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    function calcPrice(){
+      const base = Number(sizeSelect.selectedOptions[0].dataset.price || 0);
+      let add = 0;
+      if(finishSelect.value === 'luster') add = 8;
+      if(finishSelect.value === 'framed') add = 40;
+      calculated.textContent = base + add;
+    }
+
+    sizeSelect.addEventListener('change', calcPrice);
+    finishSelect.addEventListener('change', calcPrice);
+
+    window.openModal = function(size,price){
+      if(size){
+        // set selection based on params
+        for(const opt of sizeSelect.options){
+          if(opt.value === size) opt.selected = true;
+        }
+        // quick calc override if price passed
+        setTimeout(calcPrice,10);
+      }
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      // emphasize which poster selected
+      modalTitle.textContent = 'Complete your pre-order';
+      modalSub.textContent = 'Secure checkout — limited spots. Enter your details below.';
+      calcPrice();
+      // focus trap: focus first input
+      setTimeout(()=>{document.getElementById('name').focus()},80);
+    }
+
+    window.closeModal = function(){
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    checkoutBtn.addEventListener('click', function(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if(!name || !email){
+        alert('Please enter your name and email to proceed.');
+        return;
+      }
+      // Simulate checkout success (no external payment)
+      this.disabled = true;
+      this.textContent = 'Processing...';
+      setTimeout(()=>{
+        alert('Thanks, '+name+'! Your pre-order is confirmed. We emailed a receipt to '+email+'.');
+        closeModal();
+        this.disabled = false;
+        this.textContent = 'Checkout';
+      },1000);
+    });
+
+    // Gallery toggle - simply cycles posters
+    document.getElementById('galleryToggle').addEventListener('click', ()=>{
+      nextPoster();
+      // subtle hint
+      document.getElementById('poster').animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'}],{duration:260,iterations:1,easing:'cubic-bezier(.16,.9,.42,1)'});
+    });
+
+    // small extras
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
